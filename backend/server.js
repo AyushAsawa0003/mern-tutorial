@@ -12,9 +12,6 @@ app.use(express.urlencoded({ extended: false }));
 
 connectDB();
 
-//Init Goal Rouet
-const goalRoute = require("./routes/goalRoutes");
-
 //Error Handler Middleware
 const { errorHandler } = require("./middlewares/errorMiddleware");
 
@@ -22,7 +19,8 @@ const { errorHandler } = require("./middlewares/errorMiddleware");
 const PORT = process.env.PORT || 3000;
 
 //Router for Goal Controller
-app.use("/api/goals", goalRoute);
+app.use("/api/goals", require("./routes/goalRoutes"));
+app.use("/api/users", require("./routes/userRoutes"));
 
 app.use(errorHandler);
 
